@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Mystical Sun ☀️</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: radial-gradient(circle at center, #2a0033, #000);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        svg {
+            width: 520px;
+            height: 520px;
+            filter: drop-shadow(0 0 40px #a7ffe8) drop-shadow(0 0 85px rgba(229, 223, 255, 0.55));
+        }
+
+        #sun {
+            animation: float 6.8s ease-in-out infinite, spin 92s linear infinite;
+            transform-origin: 45px 46px;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-13px) rotate(0deg);
+            }
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        #dial {
+            animation: breathe 5.2s ease-in-out infinite;
+            transform-origin: 45px 46px;
+        }
+
+        @keyframes breathe {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.065);
+            }
+        }
+
+        .ray {
+            animation: rayShimmer 7.8s linear infinite;
+        }
+
+        .ray:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .ray:nth-child(2) {
+            animation-delay: 0.71s;
+        }
+
+        .ray:nth-child(3) {
+            animation-delay: 1.42s;
+        }
+
+        .ray:nth-child(4) {
+            animation-delay: 2.13s;
+        }
+
+        .ray:nth-child(5) {
+            animation-delay: 2.84s;
+        }
+
+        .ray:nth-child(6) {
+            animation-delay: 3.55s;
+        }
+
+        .ray:nth-child(7) {
+            animation-delay: 4.26s;
+        }
+
+        .ray:nth-child(8) {
+            animation-delay: 4.97s;
+        }
+
+        .ray:nth-child(9) {
+            animation-delay: 5.68s;
+        }
+
+        .ray:nth-child(10) {
+            animation-delay: 6.39s;
+        }
+
+        .ray:nth-child(11) {
+            animation-delay: 7.1s;
+        }
+
+        @keyframes rayShimmer {
+
+            0%,
+            88% {
+                stroke: #000;
+                stroke-width: 1.31;
+            }
+
+            9% {
+                stroke: #a7ffe8;
+                stroke-width: 4.8;
+            }
+
+            16% {
+                stroke: #e5dfff;
+                stroke-width: 3.4;
+            }
+
+            23% {
+                stroke: #000;
+                stroke-width: 1.31;
+            }
+        }
+
+        .decor {
+            animation: decorTwinkle 4.1s ease-in-out infinite;
+        }
+
+        #sq1 {
+            animation-delay: 0s;
+        }
+
+        #sq2 {
+            animation-delay: 0.85s;
+        }
+
+        #sq3 {
+            animation-delay: 1.7s;
+        }
+
+        #sq4 {
+            animation-delay: 2.55s;
+        }
+
+        @keyframes decorTwinkle {
+
+            0%,
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 0.95;
+            }
+
+            50% {
+                transform: scale(1.22) rotate(6deg);
+                opacity: 1;
+            }
+        }
+
+        #inner {
+            animation: wobble 7.5s ease-in-out infinite;
+            transform-origin: 45px 46px;
+        }
+
+        @keyframes wobble {
+
+            0%,
+            100% {
+                transform: rotate(-2.5deg);
+            }
+
+            50% {
+                transform: rotate(2.5deg);
+            }
+        }
+
+        /* Pause on hover so you can admire every detail */
+        svg:hover * {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+
+<body>
+
+    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 90">
+
+        <g id="sun">
+
+            <!-- Decorative outer arcs -->
+            <g>
+                <path d="M6.93,52.02c-.35-2.06-.53-4.17-.53-6.32,0-17.54,11.99-32.28,28.23-36.46" fill="none"
+                    stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.62"></path>
+                <path d="M81.69,45.7c0,18.64-13.56,34.12-31.35,37.12" fill="none" stroke="#000" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2.62"></path>
+            </g>
+
+            <!-- Large cyan sun disk (breathing) -->
+            <g id="dial">
+                <path
+                    d="M18.63,45.7c0-14.04,11.38-25.42,25.42-25.42s25.42,11.38,25.42,25.42-11.38,25.42-25.42,25.42-25.42-11.38-25.42-25.42Z"
+                    fill="#a7ffe8" stroke="#000" stroke-linejoin="round" stroke-width="1.31"></path>
+                <path
+                    d="M18.63,45.7c0-14.04,11.38-25.42,25.42-25.42s25.42,11.38,25.42,25.42-11.38,25.42-25.42,25.42-25.42-11.38-25.42-25.42Z"
+                    fill="#a7ffe8" stroke="#000" stroke-linejoin="round" stroke-width="1.31"></path>
+            </g>
+
+            <!-- Radiating sun rays with shimmering light wave -->
+            <g>
+                <path class="ray" d="M44.21,87.7v-9.31" fill="none" stroke="#000" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.31"></path>
+                <path class="ray" d="M38.92,87.36l1.18-9.24" fill="none" stroke="#000" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.31"></path>
+                <path class="ray" d="M33.71,86.36l2.33-9.02" fill="none" stroke="#000" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.31"></path>
+                <path class="ray" d="M28.67,84.71l3.45-8.65" fill="none" stroke="#000" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.31"></path>
+                <path class="ray" d="M23.89,82.44l4.51-8.15" fill="none" stroke="#000" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.31"></path>
+                <path class="ray" d="M19.42,79.59l5.51-7.51" fill="none" stroke="#000" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.31"></path>
+                <path class="ray" d="M15.35,76.19l6.41-6.76" fill="none" stroke="#000" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.31"></path>
+                <path class="ray" d="M11.75,72.3l7.21-5.89" fill="none" stroke="#000" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.31"></path>
+                <path class="ray" d="M8.66,68l7.9-4.94" fill="none" stroke="#000" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.31"></path>
+                <path class="ray" d="M6.14,63.33l8.46-3.9" fill="none" stroke="#000" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.31"></path>
+                <path class="ray" d="M4.23,58.39l8.88-2.8" fill="none" stroke="#000" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.31"></path>
+            </g>
+
+            <!-- Pointer arrows -->
+            <path d="M57.01,87.08l-7.26-4.07,4.13-7.09" fill="none" stroke="#000" stroke-linecap="round"
+                stroke-linejoin="round" stroke-width="2.62"></path>
+            <path d="M28.33,5.4l7.59,3.42-3.49,7.42" fill="none" stroke="#000" stroke-linecap="round"
+                stroke-linejoin="round" stroke-width="2.62"></path>
+
+            <!-- Twinkling decorative squares (like floating gems or stars) -->
+            <rect id="sq1" class="decor" x="40.94" y="3.4" width="9.84" height="9.84" rx="1.5" ry="1.5" fill="#e5dfff"
+                stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.31"></rect>
+            <rect id="sq2" class="decor" x="55.28" y="6.73" width="9.84" height="9.84" rx="1.5" ry="1.5" fill="#fff"
+                stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.31"></rect>
+            <rect id="sq3" class="decor" x="68.39" y="16.95" width="9.84" height="9.84" rx="1.5" ry="1.5" fill="#e5dfff"
+                stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.31"></rect>
+            <rect id="sq4" class="decor" x="75.96" y="30.71" width="9.84" height="9.84" rx="1.5" ry="1.5" fill="#fff"
+                stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.31"></rect>
+
+            <!-- Concentric rings + cross lines -->
+            <g id="center">
+                <path
+                    d="M33.7,45.96c0-13.98,4.94-25.32,11.03-25.32s11.03,11.34,11.03,25.32-4.94,25.32-11.03,25.32-11.03-11.34-11.03-25.32Z"
+                    fill="none" stroke="#000" stroke-linejoin="round" stroke-width="1.31"></path>
+                <path
+                    d="M25.72,45.96c0-13.98,8.51-25.32,19.01-25.32s19.01,11.34,19.01,25.32-8.51,25.32-19.01,25.32-19.01-11.34-19.01-25.32Z"
+                    fill="none" stroke="#000" stroke-linejoin="round" stroke-width="1.31"></path>
+                <line x1="44.73" y1="20.64" x2="44.73" y2="71.27" fill="none" stroke="#000" stroke-linejoin="round"
+                    stroke-width="1.31"></line>
+                <line x1="69.67" y1="45.58" x2="19.04" y2="45.58" fill="none" stroke="#000" stroke-linejoin="round"
+                    stroke-width="1.31"></line>
+            </g>
+
+            <!-- Cute inner motif (gentle wobble) -->
+            <g id="inner">
+                <path
+                    d="M55.04,58.55l3.46-3.54-7.15-11.6,3.53-3.63c2.55-2.62,3.56-5.77,2.25-7.04s-4.43-.19-6.98,2.43l-3.53,3.63-11.78-6.86-3.46,3.54,9.47,9.23-4.7,4.82-3.52-1.13-3.47,3.55,5.9,3.42,3.57,5.81,3.47-3.55-1.21-3.49,4.7-4.82,9.47,9.23Z"
+                    fill="#fff" stroke="#000" stroke-linejoin="round" stroke-width="1.31"></path>
+            </g>
+
+        </g>
+    </svg>
+
+</body>
+
+</html>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Cute Robot ✨</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: radial-gradient(circle at center, #0a0022, #1a0033);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        svg {
+            width: 520px;
+            height: 520px;
+            filter: drop-shadow(0 20px 45px rgba(167, 255, 232, 0.45)) drop-shadow(0 0 25px #e5dfff);
+        }
+
+        /* Whole character floats gently */
+        #character {
+            animation: float 5.8s ease-in-out infinite;
+            transform-origin: 45px 68px;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-14px);
+            }
+        }
+
+        /* Head wobbles with personality */
+        #head {
+            animation: wobble 7s ease-in-out infinite;
+            transform-origin: 46px 34px;
+        }
+
+        @keyframes wobble {
+
+            0%,
+            100% {
+                transform: rotate(-1.5deg);
+            }
+
+            50% {
+                transform: rotate(1.8deg);
+            }
+        }
+
+        /* Cute eye blinks (quick & staggered) */
+        .eye {
+            animation: blink 4.2s infinite;
+            transform-origin: center;
+        }
+
+        #eye1 {
+            animation-delay: 0s;
+            transform-origin: 70px 44px;
+        }
+
+        /* cyan large */
+        #eye2 {
+            animation-delay: 0.35s;
+            transform-origin: 45px 51px;
+        }
+
+        /* purple large */
+        #eye3 {
+            animation-delay: 1.4s;
+            transform-origin: 75px 23px;
+        }
+
+        /* top purple */
+        #eye4 {
+            animation-delay: 0.75s;
+            transform-origin: 52px 29px;
+        }
+
+        /* top cyan */
+
+        @keyframes blink {
+
+            0%,
+            91%,
+            100% {
+                transform: scaleY(1);
+            }
+
+            93%,
+            95% {
+                transform: scaleY(0.07);
+            }
+
+            /* super quick closed-eye squish */
+        }
+
+        /* Button pulses with glow */
+        #button {
+            animation: pulse 1.9s ease-in-out infinite;
+            transform-origin: 61.5px 60.6px;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                filter: brightness(1);
+            }
+
+            50% {
+                transform: scale(1.18);
+                filter: brightness(1.85);
+            }
+        }
+
+        /* Left panel lines scan with glowing highlight (sequential) */
+        .panel-line {
+            animation: scan 4.1s linear infinite;
+        }
+
+        .panel-line:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .panel-line:nth-child(2) {
+            animation-delay: 0.22s;
+        }
+
+        .panel-line:nth-child(3) {
+            animation-delay: 0.48s;
+        }
+
+        .panel-line:nth-child(4) {
+            animation-delay: 0.71s;
+        }
+
+        .panel-line:nth-child(5) {
+            animation-delay: 0.95s;
+        }
+
+        .panel-line:nth-child(6) {
+            animation-delay: 1.2s;
+        }
+
+        .panel-line:nth-child(7) {
+            animation-delay: 1.45s;
+        }
+
+        .panel-line:nth-child(8) {
+            animation-delay: 1.75s;
+        }
+
+        .panel-line:nth-child(9) {
+            animation-delay: 2.1s;
+        }
+
+        .panel-line:nth-child(10) {
+            animation-delay: 2.4s;
+        }
+
+        @keyframes scan {
+            0% {
+                stroke: #000;
+                stroke-width: 1.31;
+            }
+
+            6% {
+                stroke: #a7ffe8;
+                stroke-width: 3.2;
+            }
+
+            10% {
+                stroke: #000;
+                stroke-width: 1.31;
+            }
+
+            100% {
+                stroke: #000;
+                stroke-width: 1.31;
+            }
+        }
+
+        /* Pause everything on hover so you can admire */
+        svg:hover * {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+
+<body>
+
+    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 90">
+
+        <!-- Everything wrapped for floating -->
+        <g id="character">
+
+            <!-- Head area (screen + all 4 happy faces) -->
+            <g id="head">
+                <!-- Tilted top rectangle (screen/hat) -->
+                <rect x="9.02" y="36.7" width="61.43" height="43.19" rx="4.85" ry="4.85"
+                    transform="translate(-7.79 6.16) rotate(-8.07)" fill="none" stroke="#000" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.31"></rect>
+
+                <!-- Eye 1 - large cyan (right) -->
+                <g id="eye1" class="eye">
+                    <path
+                        d="M69.98,43.72c4.8,0,8.69-3.9,8.69-8.7s-3.89-8.69-8.69-8.69-8.69,3.89-8.69,8.69,3.89,8.7,8.69,8.7Z"
+                        fill="#a7ffe8" stroke="#000" stroke-linejoin="round" stroke-width="2.62"></path>
+                    <g>
+                        <path
+                            d="M71.46,31.74c-.13-.12-.81-.78-2.14-.39-1.18.4-1.49,2-.68,2.63.47.37,1.16.67,2.11,1,2.11.75,1.33,3.72-.82,3.75-.84,0-1.23-.06-1.97-.53"
+                            fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="1.31"></path>
+                        <path d="M69.93,40.24v-1.52" fill="none" stroke="#000" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="1.31"></path>
+                        <path d="M69.93,31.24v-1.43" fill="none" stroke="#000" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="1.31"></path>
+                    </g>
+                </g>
+
+                <!-- Eye 2 - large purple (center) -->
+                <g id="eye2" class="eye">
+                    <path
+                        d="M44.62,50.69c4.8,0,8.69-3.9,8.69-8.7s-3.89-8.69-8.69-8.69-8.69,3.89-8.69,8.69,3.89,8.7,8.69,8.7Z"
+                        fill="#e5dfff" stroke="#000" stroke-linejoin="round" stroke-width="1.31"></path>
+                    <g>
+                        <path
+                            d="M46.11,38.71c-.13-.12-.81-.78-2.14-.39-1.18.4-1.49,2-.68,2.63.47.37,1.16.67,2.11,1,2.11.75,1.33,3.72-.82,3.75-.84,0-1.23-.06-1.97-.53"
+                            fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="1.31"></path>
+                        <path d="M44.58,47.21v-1.52" fill="none" stroke="#000" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="1.31"></path>
+                        <path d="M44.58,38.21v-1.43" fill="none" stroke="#000" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="1.31"></path>
+                    </g>
+                </g>
+
+                <!-- Eye 3 - top right purple -->
+                <g id="eye3" class="eye">
+                    <path
+                        d="M75.1,22.7c4.8,0,8.69-3.9,8.69-8.7s-3.89-8.69-8.69-8.69-8.69,3.89-8.69,8.69,3.89,8.7,8.69,8.7Z"
+                        fill="#e5dfff" stroke="#000" stroke-linejoin="round" stroke-width="1.31"></path>
+                    <g>
+                        <path
+                            d="M76.58,10.72c-.13-.12-.81-.78-2.14-.39-1.18.4-1.49,2-.68,2.63.47.37,1.16.67,2.11,1,2.11.75,1.33,3.72-.82,3.75-.84,0-1.23-.06-1.97-.53"
+                            fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="1.31"></path>
+                        <path d="M75.06,19.22v-1.52" fill="none" stroke="#000" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="1.31"></path>
+                        <path d="M75.06,10.22v-1.43" fill="none" stroke="#000" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="1.31"></path>
+                    </g>
+                </g>
+
+                <!-- Eye 4 - top center cyan -->
+                <g id="eye4" class="eye">
+                    <path
+                        d="M51.96,28.98c4.8,0,8.69-3.9,8.69-8.7s-3.89-8.69-8.69-8.69-8.69,3.89-8.69,8.69,3.89,8.7,8.69,8.7Z"
+                        fill="#a7ffe8" stroke="#000" stroke-linejoin="round" stroke-width="2.62"></path>
+                    <g>
+                        <path
+                            d="M53.44,17c-.13-.12-.81-.78-2.14-.39-1.18.4-1.49,2-.68,2.63.47.37,1.16.67,2.11,1,2.11.75,1.33,3.72-.82,3.75-.84,0-1.23-.06-1.97-.53"
+                            fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="1.31"></path>
+                        <path d="M51.92,25.5v-1.52" fill="none" stroke="#000" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="1.31"></path>
+                        <path d="M51.92,16.5v-1.43" fill="none" stroke="#000" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="1.31"></path>
+                    </g>
+                </g>
+            </g>
+
+            <!-- Body area -->
+            <g id="body">
+                <!-- Main white body -->
+                <rect x="6.92" y="42" width="67.65" height="43.19" rx="5.09" ry="5.09" fill="#fff" stroke="#000"
+                    stroke-linecap="round" stroke-linejoin="round" stroke-width="2.62"></rect>
+
+                <!-- Right flap / panel -->
+                <path
+                    d="M76.37,68.44h-15.78c-4.38,0-7.97-3.58-7.97-7.97h0c0-4.38,3.58-7.97,7.97-7.97h15.78c1.56,0,1.68,1.06,1.68,2.03v12.23c0,1.67-1.68,1.67-1.68,1.67Z"
+                    fill="#fff" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.31"></path>
+
+                <!-- Pulsing button / LED -->
+                <rect id="button" x="57.54" y="56.71" width="7.8" height="7.8" rx="3.9" ry="3.9" fill="#a7ffe8"
+                    stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.31"></rect>
+            </g>
+
+            <!-- Left panel (window / vent with blinds) -->
+            <g id="panel">
+                <!-- Cyan window fill -->
+                <rect x="18.19" y="56.58" width="17.04" height="21.71" fill="#a7ffe8"></rect>
+
+                <!-- Window frame / outline -->
+                <rect x="18.19" y="48.45" width="17.04" height="29.84" fill="none" stroke="#000" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.3"></rect>
+
+                <!-- Blinds / panel lines (scanning effect) -->
+                <line class="panel-line" x1="18.19" y1="51.13" x2="35.23" y2="51.13" fill="none" stroke="#000"
+                    stroke-linecap="round" stroke-linejoin="round" stroke-width="1.31"></line>
+                <line class="panel-line" x1="18.19" y1="53.86" x2="35.23" y2="53.86" fill="none" stroke="#000"
+                    stroke-linecap="round" stroke-linejoin="round" stroke-width="1.31"></line>
+                <line class="panel-line" x1="18.19" y1="56.58" x2="35.23" y2="56.58" fill="none" stroke="#000"
+                    stroke-linecap="round" stroke-linejoin="round" stroke-width="1.31"></line>
+                <line class="panel-line" x1="18.19" y1="59.31" x2="35.23" y2="59.31" fill="none" stroke="#000"
+                    stroke-linecap="round" stroke-linejoin="round" stroke-width="1.31"></line>
+                <line class="panel-line" x1="18.19" y1="62.03" x2="35.23" y2="62.03" fill="none" stroke="#000"
+                    stroke-linecap="round" stroke-linejoin="round" stroke-width="1.31"></line>
+                <line class="panel-line" x1="18.19" y1="64.76" x2="35.23" y2="64.76" fill="none" stroke="#000"
+                    stroke-linecap="round" stroke-linejoin="round" stroke-width="1.31"></line>
+                <line class="panel-line" x1="18.19" y1="67.49" x2="35.23" y2="67.49" fill="none" stroke="#000"
+                    stroke-linecap="round" stroke-linejoin="round" stroke-width="1.31"></line>
+                <line class="panel-line" x1="18.19" y1="70.21" x2="35.23" y2="70.21" fill="none" stroke="#000"
+                    stroke-linecap="round" stroke-linejoin="round" stroke-width="1.31"></line>
+                <line class="panel-line" x1="18.19" y1="72.94" x2="35.23" y2="72.94" fill="none" stroke="#000"
+                    stroke-linecap="round" stroke-linejoin="round" stroke-width="1.31"></line>
+                <line class="panel-line" x1="18.19" y1="75.67" x2="35.23" y2="75.67" fill="none" stroke="#000"
+                    stroke-linecap="round" stroke-linejoin="round" stroke-width="1.31"></line>
+            </g>
+
+        </g>
+    </svg>
+
+</body>
+
+</html>

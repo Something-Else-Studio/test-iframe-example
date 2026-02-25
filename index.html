@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>point.me – Iframe Embed Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Figtree', sans-serif;
+            background: #f8f8fa;
+            color: #1a1a2e;
+        }
+
+        .demo-header {
+            background: #fff;
+            border-bottom: 1px solid #e5e5e5;
+            padding: 20px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .demo-header h1 {
+            font-size: 1.125rem;
+            font-weight: 700;
+        }
+
+        .demo-header .badge {
+            background: #e5dfff;
+            color: #5a36b8;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 999px;
+        }
+
+        .demo-body {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 32px 24px;
+        }
+
+        .context-block {
+            background: #fff;
+            border-radius: 12px;
+            padding: 40px 32px;
+            margin-bottom: 24px;
+            text-align: center;
+            border: 1px solid #eee;
+        }
+
+        .context-block h2 {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .context-block p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .iframe-container {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+
+        .iframe-container iframe {
+            width: 100%;
+            border: none;
+            display: block;
+            transition: height 0.3s ease;
+        }
+
+        .event-log-section {
+            margin-top: 24px;
+        }
+
+        .event-log-section h3 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #888;
+            margin-bottom: 8px;
+        }
+
+        .event-log {
+            background: #1a1a2e;
+            color: #a7ffe8;
+            border-radius: 8px;
+            padding: 16px;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.8125rem;
+            line-height: 1.6;
+            max-height: 260px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .event-log .ts { color: #666; }
+        .event-log .type { color: #e5dfff; font-weight: 600; }
+    </style>
+</head>
+<body>
+
+<header class="demo-header">
+    <h1>point.me – Iframe Component Prototype</h1>
+    <span class="badge">DEMO PARENT PAGE</span>
+</header>
+
+<main class="demo-body">
+    <div class="context-block">
+        <h2>Simulated page content above</h2>
+        <p>The embedded component sits below, as it would on the real site.</p>
+    </div>
+
+    <div class="iframe-container">
+        <iframe
+            id="component-iframe"
+            src="content-grid.html?utm_source=demo&utm_medium=iframe-test&utm_campaign=prototype"
+            title="Content Grid Component"
+        ></iframe>
+    </div>
+
+    <div class="context-block" style="margin-top: 24px;">
+        <h2>Simulated page content below</h2>
+        <p>More page content continues after the embedded section.</p>
+    </div>
+
+    <div class="event-log-section">
+        <h3>postMessage Event Log</h3>
+        <div class="event-log" id="event-log">Listening for messages from iframe...\n</div>
+    </div>
+</main>
+
+<script>
+(function () {
+    var iframe = document.getElementById('component-iframe');
+    var log = document.getElementById('event-log');
+
+    function ts() {
+        return new Date().toLocaleTimeString('en-GB', { hour12: false }) + '.' +
+               String(Date.now() % 1000).padStart(3, '0');
+    }
+
+    function appendLog(type, data) {
+        var entry = '<span class="ts">' + ts() + '</span>  <span class="type">' + type + '</span>  ' +
+                    JSON.stringify(data, null, 0) + '\n';
+        log.innerHTML += entry;
+        log.scrollTop = log.scrollHeight;
+    }
+
+    window.addEventListener('message', function (e) {
+        if (!e.data || e.data.source !== 'content-grid-headline') return;
+
+        var type = e.data.type;
+        var rest = Object.assign({}, e.data);
+        delete rest.source;
+        delete rest.type;
+
+        appendLog(type, rest);
+
+        if (type === 'resize' || type === 'ready') {
+            var h = e.data.height;
+            if (h && h > 0) {
+                iframe.style.height = h + 'px';
+            }
+        }
+    });
+
+    iframe.addEventListener('load', function () {
+        appendLog('iframe-load', { src: iframe.src });
+    });
+})();
+</script>
+
+</body>
+</html>
