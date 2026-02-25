@@ -5,7 +5,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "frame-ancestors 'self' https://www.point.me https://point.me"
+          "value": "frame-ancestors 'self' https://www.point.me https://point.me http://localhost:3000"
         }
       ]
     }
