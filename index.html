@@ -160,8 +160,24 @@
         log.scrollTop = log.scrollHeight;
     }
 
+    // Debug: log ALL messages before filtering
     window.addEventListener('message', function (e) {
-        if (!e.data || e.data.source !== 'content-grid-headline') return;
+        console.log('[parent] Raw message received:', {
+            origin: e.origin,
+            data: e.data,
+            source: e.source === iframe.contentWindow ? 'our-iframe' : 'other',
+            iframeSrc: iframe.src
+        });
+
+        if (!e.data) {
+            console.warn('[parent] Message has no data, ignoring');
+            return;
+        }
+        if (e.data.source !== 'content-grid-headline') {
+            console.warn('[parent] Message source mismatch. Expected "content-grid-headline", got:', e.data.source);
+            appendLog('UNFILTERED', e.data);
+            return;
+        }
 
         var type = e.data.type;
         var rest = Object.assign({}, e.data);

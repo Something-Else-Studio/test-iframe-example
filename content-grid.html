@@ -603,13 +603,31 @@
     var PARENT_ORIGIN = '*';
     var componentId = 'content-grid-headline';
 
+    // ── Debug logging ──
+    var DEBUG = true;
+    function dbg() {
+        if (!DEBUG) return;
+        var args = ['[content-grid iframe]'].concat(Array.prototype.slice.call(arguments));
+        console.log.apply(console, args);
+    }
+
+    dbg('Script loaded');
+    dbg('window.parent === window:', window.parent === window);
+    dbg('window.location.href:', window.location.href);
+    try { dbg('parent origin (may throw):', window.parent.location.origin); }
+    catch (err) { dbg('parent origin: cross-origin (cannot read, this is normal)'); }
+    dbg('componentId:', componentId);
+    dbg('PARENT_ORIGIN:', PARENT_ORIGIN);
+
     // ── Helpers ──
     function postToParent(type, data) {
-        if (window.parent === window) return;
-        window.parent.postMessage(
-            Object.assign({ source: componentId, type: type }, data || {}),
-            PARENT_ORIGIN
-        );
+        var msg = Object.assign({ source: componentId, type: type }, data || {});
+        if (window.parent === window) {
+            dbg('NOT posting (no parent frame):', type, msg);
+            return;
+        }
+        dbg('Posting to parent:', type, JSON.stringify(msg));
+        window.parent.postMessage(msg, PARENT_ORIGIN);
     }
 
     // ── 1. URL param forwarding ──
@@ -709,7 +727,11 @@
 
     // ── 7. Listen for messages from parent ──
     window.addEventListener('message', function (e) {
-        if (!e.data || e.data.target !== componentId) return;
+        dbg('Received message from parent:', JSON.stringify(e.data), 'origin:', e.origin);
+        if (!e.data || e.data.target !== componentId) {
+            dbg('Ignoring message (target mismatch). Expected target:', componentId, 'Got:', e.data && e.data.target);
+            return;
+        }
 
         if (e.data.type === 'get-height') {
             reportHeight();
